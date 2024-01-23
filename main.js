@@ -1,7 +1,7 @@
 let arrRound = [];
 let gameCounter; // Game counter
 let userCounter;
-let arrLengthAsIndex = arrRound.length - 1
+let arrLengthAsIndex
 
 // Function (A)
 // Resets the game and ready to play
@@ -18,28 +18,54 @@ function playRound() {
     // 1. Create step and add as a last element to the array
     const newStep = createStep();
     arrRound.push(newStep);
+    arrLengthAsIndex = arrRound.length - 1
     console.log(newStep);
+    console.log(arrRound);
+    
 
-    // Deteremine that computer's turn is fininshed, and waiti for user input
-    // ??
 
+    renderRoundCounter()
     userTurn();
 }
 
 function userTurn() {
-    // Get input from user (קלט)
-    const inputUser = prompt("Please enter your guess");
 
-    // Compare input with
-    if (+inputUser === arrRound[0]) {
-        console.log('You guessed correctly');
 
-        // gameCounter++;
-    } else {
-        console.log('You lose, game over');
-        initGame();
+    for (let i of arrRound) {
+        const inputUser = prompt("Please enter your guess")
+        if (+inputUser === i) {
+            console.log();
+            console.log('You guessed correctly');
+
+        } else {
+            console.log('You lose, game over');
+            initGame();
+            return
+            
+        }
     }
+    gameCounter++;
+    console.log("test", gameCounter);
+    playRound()
+
+    }
+   
+
+
+function pcTurn(){
+
+
+
+
 }
+
+
+
+function renderRoundCounter() {
+    
+    gameRoundDisplay.innerText = gameCounter
+}
+
 
 // Function (C)
 // 1. Creates a random number from 1 to 4
@@ -49,4 +75,5 @@ function createStep() {
 }
 
 initGame();
+const gameRoundDisplay = document.getElementById("gameRoundDisplay")
 document.getElementById('btnStart').addEventListener('click', playRound);
