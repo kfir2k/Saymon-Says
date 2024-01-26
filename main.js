@@ -10,10 +10,10 @@ let endModal = document.getElementById("endOfPlayModal").addEventListener('click
 
 
 let sounds = {
-    greenSound: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
-    redSound: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
-    blueSound: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
-    yellowSound: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
+    greenSound: new Audio("simonSound1.mp3"),
+    redSound: new Audio("simonSound2.mp3"),
+    blueSound: new Audio("simonSound3.mp3"),
+    yellowSound: new Audio("simonSound4.mp3"),
 };
 
 
@@ -27,7 +27,10 @@ let arrRound = [];
 let gameCounter; // Game counter
 let userCounter;
 let isUserTurn = false
-// let numberVlaueGuess = null;
+let highScore
+let endScore
+
+
 
 
 function initGame() {
@@ -62,6 +65,7 @@ function userTurn(guess) {
                 gameCounter++
                 renderRoundCounter()
                 playRound()
+                return
             }
             console.log("GUESSED CORRECTLY");
         } else {
@@ -139,6 +143,8 @@ function pcTurn() {
 function renderRoundCounter() {
 
     gameRoundDisplay.innerText = gameCounter
+    document.getElementById("higheScore").innerText = highScore
+    document.getElementById("correntScore").innerText = gameCounter
 
 }
 
@@ -176,7 +182,9 @@ function guessValidation(number, arryIndex) {
 
 
 
+function saveHighScore(highScore) {
 
+}
 
 
 
