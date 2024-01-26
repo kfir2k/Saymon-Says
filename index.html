@@ -17,7 +17,7 @@
 <body>
 
     <h1>Simon Says Game</h1>
-    <button id="btnStart">StartGame</button>
+        <div>Score: <span id="gameRoundDisplay"></span></div>
     <div class="simonContainer">
         <div class="simonBtn green" id="green"></div>
         <div class="simonBtn red" id="red"></div>
@@ -25,7 +25,24 @@
         <div class="simonBtn yellow" id="yellow"></div>
 
     </div>
-    <div id="gameRoundDisplay"></div>
+
+
+
+<div id="playModal" class="modal">
+    <div class="modal-content">
+        <button id="btnStart">Play</button>
+    </div>
+</div>
+
+<div id="endOfPlayModal" class="modal-end">
+    <div class="modal-content-end">
+        <h2>Your Score is: <span id="correntScore">1</span></h2>
+        <h3>High Score: <span id="HigheScore">1</span></h3>
+        <p>Click to try again</p>
+    </div>
+</div>
+
+
 </body>
 
 </html>
