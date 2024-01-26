@@ -2,10 +2,32 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
 }
 
 body {
 	background-color: rgb(99, 99, 99);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+h1 {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: center;
+	color: white;
+	font-weight: 250;
+	font-size: 2em;
+	letter-spacing: 10px;
+}
+
+#btnStart {
+	/* display: block; */
+	width: 200px;
+
+
 }
 
 .simonBtn {
@@ -19,9 +41,15 @@ body {
 	border-radius: 15px;
 }
 
+.simonBtn:hover {
+	transition: 0.2s;
+	transform: scale(1.01);
+
+}
+
 .simonContainer {
 	/*background-color: #fff;*/
-	margin: 100px;
+	margin-top: 20px;
 	display: grid;
 	grid-template-columns: 200px 200px;
 	justify-content: center;
@@ -33,7 +61,7 @@ body {
 
 }
 
-.green:hover {
+.greenOn {
 	background-color: rgb(255, 255, 255);
 	box-shadow:
 		0 0 5px #fff,
@@ -52,7 +80,7 @@ body {
 
 }
 
-.red:hover {
+.redOn {
 	background-color: rgb(255, 255, 255);
 	box-shadow:
 		0 0 5px #fff,
@@ -70,7 +98,7 @@ body {
 	background-color: yellow;
 }
 
-.yellow:hover {
+.yellowOn {
 	background-color: rgb(255, 255, 255);
 	box-shadow:
 		0 0 5px #fff,
@@ -87,7 +115,7 @@ body {
 
 }
 
-.blue:hover {
+.blueOn {
 	background-color: rgb(255, 255, 255);
 	box-shadow:
 		0 0 5px #fff,

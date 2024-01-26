@@ -1,3 +1,12 @@
+const gameRoundDisplay = document.getElementById("gameRoundDisplay")
+document.getElementById('btnStart').addEventListener('click', playRound);
+document.getElementById('green').addEventListener('click', handleClickOnSimonBtn);
+document.getElementById('red').addEventListener('click', handleClickOnSimonBtn);
+document.getElementById('blue').addEventListener('click', handleClickOnSimonBtn);
+document.getElementById('yellow').addEventListener('click', handleClickOnSimonBtn);
+
+
+
 let arrRound = [];
 let gameCounter; // Game counter
 let userCounter;
@@ -10,6 +19,7 @@ function initGame() {
     arrRound = [];
     console.log('Game initiated...');
     isUserTurn = false
+    renderRoundCounter()
 }
 
 // Function (B)
@@ -26,6 +36,8 @@ function userTurn(guess) {
     if (isUserTurn) {
         if (guessValidation(guess, userCounter)) {
             userCounter++
+            gameCounter++
+            renderRoundCounter()
             console.log("userCounter-------", userCounter);
             console.log(userCounter, arrRound.length);
             if (userCounter >= arrRound.length) {
@@ -55,6 +67,36 @@ function pcTurn() {
         const intervalID = setInterval(() => {
             if (arryIntervalCounter !== arrRound.length) {
                 console.log("From interval of pcTurn", arrRound[arryIntervalCounter]);
+
+                if (arrRound[arryIntervalCounter] === 1) {
+                    document.getElementById('green').classList.add("greenOn")
+                    setTimeout(() => {
+                        document.getElementById('green').classList.remove("greenOn")
+                    }, 200)
+                }
+                if (arrRound[arryIntervalCounter] === 2) {
+                    document.getElementById('red').classList.add("redOn")
+                    setTimeout(() => {
+                        document.getElementById('red').classList.remove("redOn")
+                    }, 200)
+                }
+                if (arrRound[arryIntervalCounter] === 3) {
+                    document.getElementById('yellow').classList.add("yellowOn")
+                    setTimeout(() => {
+                        document.getElementById('yellow').classList.remove("yellowOn")
+                    }, 200)
+                }
+                if (arrRound[arryIntervalCounter] === 4) {
+                    document.getElementById('blue').classList.add("blueOn")
+                    setTimeout(() => {
+                        document.getElementById('blue').classList.remove("blueOn")
+                    }, 200)
+                }
+
+
+
+
+
                 arryIntervalCounter++
             } else {
                 clearInterval(intervalID)
@@ -62,7 +104,7 @@ function pcTurn() {
                 resolve()
             }
 
-        }, 1000);
+        }, 500);
     })
 
 
@@ -110,11 +152,7 @@ function guessValidation(number, arryIndex) {
 
 
 initGame();
-const gameRoundDisplay = document.getElementById("gameRoundDisplay")
-document.getElementById('btnStart').addEventListener('click', playRound);
-document.getElementById('green').addEventListener('click', handleClickOnSimonBtn);
-document.getElementById('red').addEventListener('click', handleClickOnSimonBtn);
-document.getElementById('blue').addEventListener('click', handleClickOnSimonBtn);
-document.getElementById('yellow').addEventListener('click', handleClickOnSimonBtn);
+
+
 
 
