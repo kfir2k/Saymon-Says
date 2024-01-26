@@ -1,15 +1,16 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-body{
+body {
 	background-color: rgb(99, 99, 99);
 }
 
 .simonBtn {
-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;	text-align: center;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+	text-align: center;
 	/*margin: 10px;*/
 	/*background-color: red;*/
 	/*border: 5px solid rgb(0, 0, 0);*/
@@ -18,25 +19,46 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 	border-radius: 15px;
 }
 
-.simonContainer{
+.simonContainer {
 	/*background-color: #fff;*/
 	margin: 100px;
 	display: grid;
-	grid-template-columns: 200px 200px ;
+	grid-template-columns: 200px 200px;
 	justify-content: center;
 	gap: 30px;
 }
 
-.green{
+.green {
 	background-color: green;
-	
-}.green:hover {
+
+}
+
+.green:hover {
 	background-color: rgb(255, 255, 255);
 	box-shadow:
 		0 0 5px #fff,
 		0 0 10px #fff,
 		0 0 20px #fff,
-		0 0 40px rgb(29, 146, 0),
+		0 0 40px #0f0,
+		0 0 20px #0f0,
+		0 0 50px #0f0,
+		0 0 50px #0f0;
+}
+
+
+
+.red {
+	background-color: rgb(255, 0, 0);
+
+}
+
+.red:hover {
+	background-color: rgb(255, 255, 255);
+	box-shadow:
+		0 0 5px #fff,
+		0 0 10px #fff,
+		0 0 20px #fff,
+		0 0 40px #f00,
 		0 0 20px #f00,
 		0 0 50px #f00,
 		0 0 50px #f00;
@@ -44,26 +66,35 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 
 
 
-.red{
-	background-color: rgb(255, 0, 0);
-
-}.red:hover{
-	background-color: rgb(255, 255, 255);
-	box-shadow:
-			0 0 5px #fff,
-			0 0 10px #fff,
-			0 0 20px #fff,
-			0 0 40px #f00,
-			0 0 20px #f00,
-			0 0 50px #f00,
-			0 0 50px #f00;
-	}
-
-
-
-.yellow{
+.yellow {
 	background-color: yellow;
 }
-.blue{
+
+.yellow:hover {
+	background-color: rgb(255, 255, 255);
+	box-shadow:
+		0 0 5px #fff,
+		0 0 10px #fff,
+		0 0 20px #fff,
+		0 0 40px #FFFF00,
+		0 0 20px #FFFF00,
+		0 0 50px #FFFF00,
+		0 0 50px #FFFF00;
+}
+
+.blue {
 	background-color: blue;
+
+}
+
+.blue:hover {
+	background-color: rgb(255, 255, 255);
+	box-shadow:
+		0 0 5px #fff,
+		0 0 10px #fff,
+		0 0 20px #fff,
+		0 0 40px #0000ff,
+		0 0 20px #0000ff,
+		0 0 50px #0000ff,
+		0 0 50px #0000ff;
 }
