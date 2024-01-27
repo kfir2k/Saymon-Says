@@ -28,7 +28,7 @@ Open the `index.html` file in your preferred web browser to start playing.
 
 ## Preview
 
-![Simon Says Game]([screenshot.png](https://i.imgur.com/xVilYR9.png))
+![Simon Says Game](https://i.imgur.com/xVilYR9.png)
 
 ## Acknowledgments
 
