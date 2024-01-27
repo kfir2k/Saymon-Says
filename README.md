@@ -5,7 +5,7 @@ Welcome to the **Simon Says Game**, a classic memory and pattern recognition gam
 ## Getting Started
 
 1. **Clone the Repository:**
-git clone https://github.com/your-username/simon-says-game.git
+git clone https://github.com/kfir2k/Simon-Says.git
 
 
 2. **Open the HTML File:**
