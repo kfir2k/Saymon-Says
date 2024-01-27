@@ -61,8 +61,8 @@ h1 {
 }
 
 .simonBtn:hover {
-	transition: 0.2s;
-	transform: scale(1.01);
+
+	transform: scale(1.02);
 
 }
 
@@ -74,6 +74,9 @@ h1 {
 	justify-content: center;
 	gap: 30px;
 }
+
+
+/*====================BTNS EFFECTS=====================*/
 
 .green {
 	background-color: green;
@@ -90,6 +93,19 @@ h1 {
 		0 0 20px #0f0,
 		0 0 50px #0f0,
 		0 0 50px #0f0;
+}
+
+
+.green:active{
+		background-color: rgb(255, 255, 255);
+			box-shadow:
+				0 0 5px #fff,
+				0 0 10px #fff,
+				0 0 20px #fff,
+				0 0 40px #0f0,
+				0 0 20px #0f0,
+				0 0 50px #0f0,
+				0 0 50px #0f0;
 }
 
 
@@ -111,6 +127,17 @@ h1 {
 		0 0 50px #f00;
 }
 
+.red:active{
+		background-color: rgb(255, 255, 255);
+			box-shadow:
+				0 0 5px #fff,
+				0 0 10px #fff,
+				0 0 20px #fff,
+				0 0 40px #f00,
+				0 0 20px #f00,
+				0 0 50px #f00,
+				0 0 50px #f00;
+}
 
 
 .yellow {
@@ -129,6 +156,18 @@ h1 {
 		0 0 50px #FFFF00;
 }
 
+.yellow:active{
+		background-color: rgb(255, 255, 255);
+			box-shadow:
+				0 0 5px #fff,
+				0 0 10px #fff,
+				0 0 20px #fff,
+				0 0 40px #FFFF00,
+				0 0 20px #FFFF00,
+				0 0 50px #FFFF00,
+				0 0 50px #FFFF00;
+}
+
 .blue {
 	background-color: blue;
 
@@ -145,6 +184,23 @@ h1 {
 		0 0 50px #0000ff,
 		0 0 50px #0000ff;
 }
+
+.blue:active{
+		background-color: rgb(255, 255, 255);
+			box-shadow:
+				0 0 5px #fff,
+				0 0 10px #fff,
+				0 0 20px #fff,
+				0 0 40px #0000ff,
+				0 0 20px #0000ff,
+				0 0 50px #0000ff,
+				0 0 50px #0000ff;
+}
+
+
+
+
+/*==================================================================*/
 
 
 

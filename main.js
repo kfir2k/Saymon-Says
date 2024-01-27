@@ -16,8 +16,14 @@ let sounds = {
     yellowSound: new Audio("simonSound4.mp3"),
 };
 
+Object.values(sounds).forEach(sound => sound.load());
 
-
+async function playSound(sound) {
+    return new Promise(resolve => {
+        sound.addEventListener('ended', resolve);
+        sound.play();
+    });
+}
 
 
 
@@ -27,8 +33,11 @@ let arrRound = [];
 let gameCounter; // Game counter
 let userCounter;
 let isUserTurn = false
-let highScore
+let highScore = 0
 let endScore
+
+
+
 
 
 
@@ -37,9 +46,9 @@ function initGame() {
     
     gameCounter = userCounter = 0;
     arrRound = [];
-    console.log('Game initiated...');
     isUserTurn = false
     renderRoundCounter()
+
 }
 
 // Function (B)
@@ -58,24 +67,25 @@ function userTurn(guess) {
         if (guessValidation(guess, userCounter)) {
             userCounter++
             renderRoundCounter()
-            console.log("userCounter-------", userCounter);
-            console.log(userCounter, arrRound.length);
             if (userCounter >= arrRound.length) {
                 userCounter = 0
                 gameCounter++
+                endScore = gameCounter
                 renderRoundCounter()
                 playRound()
                 return
             }
-            console.log("GUESSED CORRECTLY");
+
         } else {
             document.getElementById("endOfPlayModal").style.display = "block"
+            endScore = gameCounter
+            saveHighScore(calcHighScore())
             initGame()
-            return console.log("Wrong guess");
+            return
         }
 
     } else {
-        return console.log("Not your turn");
+        return
     }
 
 
@@ -83,56 +93,114 @@ function userTurn(guess) {
 }
 
 
+// OLD WAY ("Tried to use interval but its made the btns go crazy")
+//async function pcTurn() {
+//    return new Promise((resolve) => {
+//        isUserTurn = false
+//        let arryIntervalCounter = 0
+//        const intervalID = setInterval(async () => {
+//            if (arryIntervalCounter !== arrRound.length) {
+//                console.log("From interval of pcTurn", arrRound[arryIntervalCounter]);
 
-function pcTurn() {
-    return new Promise((resolve) => {
+//                if (arrRound[arryIntervalCounter] === 1) {
+//                    document.getElementById('green').classList.add("greenOn")
+//                    await playSound(sounds.greenSound, 400);
+//                    setTimeout(() => {
+//                        document.getElementById('green').classList.remove("greenOn")
+//                    }, 400)
+//                }
+//                if (arrRound[arryIntervalCounter] === 2) {
+//                    document.getElementById('red').classList.add("redOn")
+//                    await playSound(sounds.redSound, 400);
+//                    setTimeout(() => {
+//                        document.getElementById('red').classList.remove("redOn")
+//                    }, 400)
+//                }
+//                if (arrRound[arryIntervalCounter] === 3) {
+//                    document.getElementById('yellow').classList.add("yellowOn")
+//                    await playSound(sounds.yellowSound, 400);
+//                    setTimeout(() => {
+//                        document.getElementById('yellow').classList.remove("yellowOn")
+//                    }, 400)
+//                }
+//                if (arrRound[arryIntervalCounter] === 4) {
+//                    document.getElementById('blue').classList.add("blueOn")
+//                    await playSound(sounds.blueSound, 400);
+//                    setTimeout(() => {
+//                        document.getElementById('blue').classList.remove("blueOn")
+//                    }, 400)
+//                }
+
+
+
+
+
+//                arryIntervalCounter++
+//            } else {
+//                clearInterval(intervalID)
+//                isUserTurn = true
+//                resolve()
+//            }
+
+//        }, 600);
+//    })
+
+
+//}
+
+
+
+
+async function pcTurn() {
+    return new Promise(async (resolve) => {
         isUserTurn = false
         let arryIntervalCounter = 0
-        const intervalID = setInterval(() => {
+        await delay(1000);
+        for (let i of arrRound) {
+            
+
             if (arryIntervalCounter !== arrRound.length) {
-                console.log("From interval of pcTurn", arrRound[arryIntervalCounter]);
 
-                if (arrRound[arryIntervalCounter] === 1) {
-                    document.getElementById('green').classList.add("greenOn")
-                    sounds.greenSound.play()
-                    setTimeout(() => {
-                        document.getElementById('green').classList.remove("greenOn")
-                    }, 400)
+
+                if (i === 1) {
+                    await delay(20);
+                    await lightUpButton("green")
+                    await playSound(sounds.greenSound);
+                    await delay(20);
                 }
-                if (arrRound[arryIntervalCounter] === 2) {
-                    document.getElementById('red').classList.add("redOn")
-                    sounds.redSound.play()
-                    setTimeout(() => {
-                        document.getElementById('red').classList.remove("redOn")
-                    }, 400)
+                if (i === 2) {
+
+                    await delay(20);
+                    await lightUpButton("red")
+                    await playSound(sounds.redSound);
+                    await delay(20);
+
                 }
-                if (arrRound[arryIntervalCounter] === 3) {
-                    document.getElementById('yellow').classList.add("yellowOn")
-                    sounds.yellowSound.play()
-                    setTimeout(() => {
-                        document.getElementById('yellow').classList.remove("yellowOn")
-                    }, 400)
+                if (i === 3) {
+                    await delay(20);
+                    await lightUpButton("yellow")
+                    await playSound(sounds.yellowSound);
+                    await delay(20);
                 }
-                if (arrRound[arryIntervalCounter] === 4) {
-                    document.getElementById('blue').classList.add("blueOn")
-                    sounds.blueSound.play()
-                    setTimeout(() => {
-                        document.getElementById('blue').classList.remove("blueOn")
-                    }, 400)
+                if (i === 4) {
+                    await delay(20);
+                    await lightUpButton("blue")
+                    await playSound(sounds.blueSound);
+                    await delay(20);
                 }
 
-
-
-
-
+                
                 arryIntervalCounter++
+
             } else {
-                clearInterval(intervalID)
+
                 isUserTurn = true
                 resolve()
             }
 
-        }, 600);
+        }
+        isUserTurn = true
+
     })
 
 
@@ -143,9 +211,28 @@ function pcTurn() {
 function renderRoundCounter() {
 
     gameRoundDisplay.innerText = gameCounter
-    document.getElementById("higheScore").innerText = highScore
-    document.getElementById("correntScore").innerText = gameCounter
+    document.getElementById("correntScore").innerText = endScore
+    document.getElementById("higheScore").innerText = calcHighScore()
 
+
+
+}
+
+
+function calcHighScore() {
+
+    let savedScore = localStorage.getItem("highScore")
+    if (savedScore != 0 && savedScore > endScore) {
+        return savedScore
+    }
+    if (highScore > endScore) {
+        return highScore
+    } else {
+        return highScore = endScore
+    }
+
+    
+    
 }
 
 
@@ -153,25 +240,29 @@ function createStep() {
     return Math.floor(Math.random() * 4) + 1;
 }
 
-function handleClickOnSimonBtn(event) {
+async function handleClickOnSimonBtn(event) {
+    if (isUserTurn) {
+        if (event.target.id === "green") {
+            sounds.greenSound.play()
+            return userTurn(1)
+        }
+        if (event.target.id === "red") {
+            sounds.redSound.play()
+            return userTurn(2)
+        }
+        if (event.target.id === "yellow") {
+            sounds.yellowSound.play()
+            return userTurn(3)
+        }
+        if (event.target.id === "blue") {
+            sounds.blueSound.play()
+            return userTurn(4)
+        }
+    } else {
+
+}
 
 
-    if (event.target.id === "green") {
-        sounds.greenSound.play()
-        return userTurn(1)
-    }
-    if (event.target.id === "red") {
-        sounds.redSound.play()
-        return userTurn(2)
-    }
-    if (event.target.id === "yellow") {
-        sounds.yellowSound.play()
-        return userTurn(3)
-    }
-    if (event.target.id === "blue") {
-        sounds.blueSound.play()
-        return userTurn(4)
-    }
 
 }
 
@@ -180,11 +271,26 @@ function guessValidation(number, arryIndex) {
 }
 
 
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+async function lightUpButton(buttonId) {
+    const buttonElement = document.getElementById(buttonId);
+    buttonElement.classList.add(`${buttonId}On`);
+    await delay(150);
+    buttonElement.classList.remove(`${buttonId}On`);
+    await delay(150);
+}
 
 
 function saveHighScore(highScore) {
-
+    localStorage.setItem("highScore",highScore)
 }
+
+
+
 
 
 
