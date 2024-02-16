@@ -1,9 +1,17 @@
 const gameRoundDisplay = document.getElementById("gameRoundDisplay")
 const startBtn = document.getElementById('btnStart').addEventListener('click', playRound);
 document.getElementById('green').addEventListener('click', handleClickOnSimonBtn);
+document.getElementById('green').addEventListener('touchstart', handleClickOnSimonBtn);
+
 document.getElementById('red').addEventListener('click', handleClickOnSimonBtn);
+document.getElementById('red').addEventListener('touchstart', handleClickOnSimonBtn);
+
 document.getElementById('blue').addEventListener('click', handleClickOnSimonBtn);
+document.getElementById('blue').addEventListener('touchstart', handleClickOnSimonBtn);
+
 document.getElementById('yellow').addEventListener('click', handleClickOnSimonBtn);
+document.getElementById('yellow').addEventListener('touchstart', handleClickOnSimonBtn);
+
 let endModal = document.getElementById("endOfPlayModal").addEventListener('click', playRound);
 
 
